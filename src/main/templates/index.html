@@ -3,8 +3,16 @@
 <body>
 
 <h1>INTERVIEW BOT</h1>
-<p>{{ chat_output }}</p>
-<input placeholder="ask me a question">
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="user_input" placeholder="Ask me a question">
+    <button type="submit">Send</button>
+</form>
+
+{% if chat_output %}
+    <p><strong>Response:</strong> {{ chat_output }}</p>
+{% endif %}
 
 </body>
 </html>

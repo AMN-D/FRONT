@@ -57,16 +57,17 @@ async def main(input_message):
     5.  **Focus on strengths:** When multiple pieces of information are available, prioritize those that highlight your qualifications, skills, and achievements relevant to a professional context. Aim to articulate these clearly and concisely.
     6.  **Maintain a professional tone:** Your responses should be confident, clear, and professional, as expected in an interview setting.
     7.  **Clarity and Directness:** When providing specific information (e.g., skills, project details, links), present it clearly and directly, avoiding ambiguity or unnecessary conversational embellishment. Ensure all relevant details from the retrieved document are included in a concise manner.
+    8.  **Thorough Document Review:** Try to answer all questions before saying "information is not available." Go through the document thoroughly and make sure the information is not truly available before concluding so.
     """
 
-    print("""
+    # print("""
 
-    ▗▄▄▄▖▗▄▄▖  ▗▄▖ ▗▖  ▗▖▗▄▄▄▖
-    ▐▌   ▐▌ ▐▌▐▌ ▐▌▐▛▚▖▐▌  █  
-    ▐▛▀▀▘▐▛▀▚▖▐▌ ▐▌▐▌ ▝▜▌  █  
-    ▐▌   ▐▌ ▐▌▝▚▄▞▘▐▌  ▐▌  █  
+    # ▗▄▄▄▖▗▄▄▖  ▗▄▖ ▗▖  ▗▖▗▄▄▄▖
+    # ▐▌   ▐▌ ▐▌▐▌ ▐▌▐▛▚▖▐▌  █  
+    # ▐▛▀▀▘▐▛▀▚▖▐▌ ▐▌▐▌ ▝▜▌  █  
+    # ▐▌   ▐▌ ▐▌▝▚▄▞▘▐▌  ▐▌  █  
                             
-    """)
+    # """)
 
     config = {"configurable": {"thread_id": "def234"}}
     agent_executor = create_react_agent(llm, [retrieve], checkpointer=memory)
@@ -76,13 +77,16 @@ async def main(input_message):
         {"role": "user", "content": input_message}
         ]
 
-    for event in agent_executor.stream(
+    async for event in agent_executor.astream(
         {"messages": messages},
         stream_mode="values",
         config=config,
     ):
-        if isinstance(event["messages"][-1], AIMessage):
-            return event["messages"][-1].content
+        for msg in event.get("messages", []):
+            if isinstance(msg, AIMessage):
+                if not msg.additional_kwargs.get("function_call"):
+                    print(event["messages"][-1])
+                    return event["messages"][-1].content
 
 if __name__ == "__main__":
     asyncio.run(main())
