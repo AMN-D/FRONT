@@ -1,22 +1,15 @@
-from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 from .ragagent import main
 import asyncio
 
 # Create your views here.
-@csrf_exempt
-async def index(request):
-    chat_output = ""
-    
-    if request.method == "POST":
-        user_input = request.POST.get("user_input", "")
-        if user_input:
-            chat_output = await main(user_input)
+class ChatAPIView(APIView):
+    def post(self, request):
+        user_input = request.data.get("user_input", "")
+        if not user_input:
+            return Response({"error": "user_input is required"}, status=status.HTTP_400_BAD_REQUEST)
 
-    template = loader.get_template('index.html')
-    context = {
-        'chat_output': chat_output
-    }
-    return HttpResponse(template.render(context, request))
+        chat_output = asyncio.run(main(user_input))
+        return Response({"chat_output": chat_output}, status=status.HTTP_200_OK)
