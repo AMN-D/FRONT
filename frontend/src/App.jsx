@@ -8,12 +8,12 @@ function App() {
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // prevent page reload
+    e.preventDefault(); 
     setError('');
     setChatOutput('');
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/chat/', {
+      const response = await axios.post('http://localhost:8000/api/chat/', {
         user_input: userInput,
       });
 
@@ -25,29 +25,26 @@ function App() {
 
   return (
     <>
-    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '1rem' }}>
-      <h2>Chat with AI</h2>
+    <div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Ask something..."
-          style={{ width: '100%', padding: '0.5rem' }}
         />
-        <button type="submit" style={{ marginTop: '0.5rem' }}>
+        <button type="submit">
           Send
         </button>
       </form>
 
       {chatOutput && (
-        <div style={{ marginTop: '1rem', background: '#eee', padding: '1rem' }}>
+        <div>
           <strong>Response:</strong> {chatOutput}
         </div>
       )}
 
       {error && (
-        <div style={{ color: 'red', marginTop: '1rem' }}>
+        <div>
           <strong>Error:</strong> {error}
         </div>
       )}
