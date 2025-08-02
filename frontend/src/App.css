@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: beige;
+    color: black;
+    height: 100vh;
+    width: 100vw;
+}
+
+.logo {
+    font-family: "Pinyon Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    font-size: 8rem;
+}
+
+.userForm {
+    display: flex;
+    font-family: "JetBrains Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+    justify-content: right;
+    align-items: center;
+}
+
+.userInput {
+    padding: 1rem;
+    border-radius: 5rem 2rem 2rem 5rem;
+    border: 1px solid black;
+    font-size: 1rem;
+    font-family: "JetBrains Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin-right: 0.2rem;
+    background-color: whitesmoke;
+}
+
+.userSubmit {
+    border: 1px solid black;
+    border-radius: 2rem 5rem 5rem 2rem;
+    background-color: black;
+    padding: 0.6rem;
+    cursor: pointer;
+}
