@@ -1,17 +1,18 @@
 body {
     margin: 0;
     padding: 0;
+    padding-inline: 10%;
+    color: black;
+    background-color: beige;
 }
 
 .container {
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: beige;
-    color: black;
     height: 100vh;
-    width: 100vw;
 }
 
 .logo {
@@ -20,6 +21,9 @@ body {
     font-style: normal;
     text-align: center;
     font-size: 8rem;
+    padding-inline: 2rem;
+    margin: 0;
+    margin-bottom: 1rem;
 }
 
 .userForm {
@@ -49,4 +53,13 @@ body {
     background-color: black;
     padding: 0.6rem;
     cursor: pointer;
+}
+
+.chatOutput {
+    background-color: bisque;
+    border: 1px solid burlywood;
+    margin: 0;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
 }
