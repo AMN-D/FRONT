@@ -1,135 +1,18 @@
+:root {
+  --main-bg: ivory;
+}
+
 body {
     margin: 0;
     padding: 0;
     padding-inline: 10%;
-    color: black;
-    background-color: beige;
+    background-color: var(--main-bg);
 }
 
 .container {
-    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
-}
-
-.logo {
-    font-family: "Pinyon Script", cursive;
-    font-weight: 400;
-    font-style: normal;
-    text-align: center;
-    font-size: 8rem;
-    padding-inline: 2rem;
-    margin: 0;
-    margin-bottom: 1rem;
-}
-
-.userForm {
-    display: flex;
-    font-family: "JetBrains Mono", monospace;
-    font-optical-sizing: auto;
-    font-style: normal;
-    justify-content: right;
     align-items: center;
-}
-
-.userInput {
-    font-family: "JetBrains Mono", monospace;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-size: 1rem;
-    border-radius: 5rem 2rem 2rem 5rem;
-    background-color: whitesmoke;
-    border: 1px solid black;
-    margin-right: 0.2rem;
-    width: 100%;
-    padding: 1rem;
-}
-
-.userSubmit {
-    border: 1px solid black;
-    border-radius: 2rem 5rem 5rem 2rem;
-    background-color: black;
-    padding: 0.6rem;
-    cursor: pointer;
-}
-
-.chatOutput {
-    font-family: "JetBrains Mono", monospace;
-    font-optical-sizing: auto;
-    font-style: normal;
-    background-color: bisque;
-    border: 1px solid burlywood;
-    margin: 0;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-}
-
-.userForm.submit {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    margin-bottom: 1rem;
-}
-
-.chatOutput.submit {
-    width: 100%;
-    background-color: rgb(247, 247, 230);
-    border: 1px solid burlywood;
     box-sizing: border-box;
-    margin: 0;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
 }
-
-.logo.submit {
-    font-family: "Pinyon Script", cursive;
-    font-weight: 400;
-    font-style: normal;
-    text-align: center;
-    font-size: 4rem;
-    padding-inline: 2rem;
-    margin: 0;
-    margin-block: 1rem;
-}
-
-@keyframes slideInDown {
-  0% {
-    transform: translate3d(0, -100%, 0) scaleX(0);
-    visibility: visible;
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0) scaleX(1);
-    transform-origin: center;
-    opacity: 1;
-  }
-}
-
-@keyframes animate__slideInUp {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.animate__slideInDown {
-  animation-name: slideInDown;
-  animation-duration: 0.5s;
-  animation-fill-mode: both;
-}
-
-.animate__slideInUp {
-  animation: animate__slideInUp 0.5s ease-out forwards;
-}
-

@@ -28,15 +28,15 @@ function App() {
   return (
     <>
     <div className='container'>
-      <h1 className={submitted ? 'logo submit animate__slideInUp' : 'logo'}>front</h1>
+      <h1 className={submitted ? 'logo submit' : 'logo'}>front</h1>
 
       {submitted && (
-        <div className={submitted ? 'chatOutput submit animate__slideInUp' : 'chatOutput'}>
+        <div className={submitted ? 'chatOutput submit' : 'chatOutput'}>
           {chatOutput ? chatOutput : <em>Loading...</em>}
         </div>
       )}
 
-      <form className={submitted ? 'userForm submit animate__slideInDown' : 'userForm'} onSubmit={handleSubmit}>
+      <form className={submitted ? 'userForm submit' : 'userForm'} onSubmit={handleSubmit}>
         <input
           className='userInput'
           type="text"
