@@ -6,6 +6,7 @@ function App() {
   const [userInput, setUserInput] = useState('');
   const [chatOutput, setChatOutput] = useState('');
   const [error, setError] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
@@ -18,6 +19,7 @@ function App() {
       });
 
       setChatOutput(response.data.chat_output);
+      setSubmitted(true);
     } catch (err) {
       setError(err.response?.data?.error || 'Something went wrong.');
     }
@@ -26,15 +28,15 @@ function App() {
   return (
     <>
     <div className='container'>
-      <h1 className='logo'>front</h1>
+      <h1 className={submitted ? 'logo submit animate__slideInUp' : 'logo'}>front</h1>
 
-      {chatOutput && (
-        <div className='chatOutput'>
-          {chatOutput}
+      {submitted && (
+        <div className={submitted ? 'chatOutput submit animate__slideInUp' : 'chatOutput'}>
+          {chatOutput ? chatOutput : <em>Loading...</em>}
         </div>
       )}
 
-      <form className='userForm' onSubmit={handleSubmit}>
+      <form className={submitted ? 'userForm submit animate__slideInDown' : 'userForm'} onSubmit={handleSubmit}>
         <input
           className='userInput'
           type="text"
