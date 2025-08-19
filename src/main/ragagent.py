@@ -10,7 +10,7 @@ from langchain_core.messages import SystemMessage, AIMessage
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.prebuilt import create_react_agent
 
-document_path = os.path.join("/data/Documents/Github/FRONT/src/main", "documents", "amn_data_extended.pdf")
+document_path = os.path.join("O:\\Users\\AMANDHUMAL\\Documents\\Github\\FRONT\\src\\main", "documents", "amn_data_extended.pdf")
 
 async def main(input_message):
     os.environ["GOOGLE_API_KEY"] = "AIzaSyD0OQvACEPssc_gazJUCGRvvlxht8zqud0"
